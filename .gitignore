@@ -5,3 +5,5 @@
 scss/
 assets/images/
 *.html
+node_modules/
+package-lock.json
