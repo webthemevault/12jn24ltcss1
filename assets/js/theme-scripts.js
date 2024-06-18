@@ -13,18 +13,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
             window.onscroll = function () { stickyFunction() };
 
             // Get the navbar
-            const header = document.querySelector(".tt-main-header");
+            const header = document.querySelector(".tx-main-header");
 
             // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
             function stickyFunction() {
 
                 if (window.scrollY > 100) {
 
-                    header.classList.add("tt-fixed-top");
+                    header.classList.add("tx-fixed-top");
 
                 } else {
 
-                    header.classList.remove("tt-fixed-top");
+                    header.classList.remove("tx-fixed-top");
 
                 }
             }
@@ -205,10 +205,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
             // Find the menu and its overlay
             const navbarMenu = document.querySelector("#sidebarMenu");
             const overlay = document.querySelector(".body-overlay");
-            const closeBtn = document.querySelector("#tt-close-menu-btn");
+            const closeBtn = document.querySelector("#tx-close-menu-btn");
 
             // Menu Toggle
-            const collapseBtns = document.querySelectorAll(".tt-sidebar-toggle-2");
+            const collapseBtns = document.querySelectorAll(".tx-sidebar-toggle");
 
             collapseBtns.forEach((collapseBtn) => {
                 collapseBtn.addEventListener('click', openSidebar);
@@ -305,13 +305,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
             var focusedElementBefore;
 
             // Find the menu and its overlay
-            const navbarMenu = document.querySelector("#tt-sidebar");
-            const mainContent = document.querySelector("#tt-main");
-            const topHeader = document.querySelector("#tt-top-header");
-            const footer = document.querySelector("#tt-footer");
+            const navbarMenu = document.querySelector("#tx-sidebar");
+            const mainContent = document.querySelector("#tx-main");
+            const topHeader = document.querySelector("#tx-top-header");
+            const footer = document.querySelector("#tx-footer");
 
             // Menu Toggle
-            const collapseBtns = document.querySelectorAll(".tt-sidebar-toggle");
+            const collapseBtns = document.querySelectorAll(".tx-sidebar-toggle");
 
             collapseBtns.forEach((collapseBtn) => {
                 collapseBtn.addEventListener('click', openSidebar);
@@ -335,7 +335,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.log("collapseSidebar(): " + e);
         }
     }
-    collapseSidebar();
+    // collapseSidebar();
 
     /**
      * ====================

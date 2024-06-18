@@ -7,9 +7,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     function switchTheme() {
         try {
             let darkMode = localStorage.getItem("darkMode");
-            const switchModeToggles = document.querySelectorAll(".tt-theme-switch-btn");
+            const switchModeToggles = document.querySelectorAll(".tx-theme-switch-btn");
             const mainDoc = document.getElementsByTagName("html")[0];
-            const iconClass =   document.querySelector(".tt-theme-switch-btn .tt-icon");
+            const iconClass =   document.querySelector(".tx-theme-switch-btn .tx-icon");
 
             const enableDarkMode = () => {
                 // Add class to the html
