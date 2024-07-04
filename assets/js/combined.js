@@ -641,6 +641,48 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
     addDataARIA();
 
+    function addAriaAttributes() {
+
+        function setRoleAttribute(selector, role) {
+            document.querySelectorAll(selector).forEach(element => {
+                if (!element.hasAttribute('role')) {
+                    element.setAttribute('role', role);
+                }
+            });
+        }
+    
+        function setLinkAttributes(selector, role, ariaLabel) {
+            document.querySelectorAll(selector).forEach(link => {
+                if (!link.hasAttribute('role')) {
+                    link.setAttribute('role', role);
+                }
+                if (!link.hasAttribute('aria-label')) {
+                    link.setAttribute('aria-label', ariaLabel);
+                }
+            });
+        }
+    
+        try {
+            setRoleAttribute('table', 'table');
+            setRoleAttribute('caption', 'caption');
+            setRoleAttribute('thead, tbody, tfoot', 'rowgroup');
+            setRoleAttribute('tr', 'row');
+            setRoleAttribute('td', 'cell');
+            setRoleAttribute('th', 'columnheader');
+            setRoleAttribute('th[scope=row]', 'rowheader');
+            setRoleAttribute('ol, ul', 'list');
+            setRoleAttribute('li', 'listitem');
+            setRoleAttribute('dl', 'associationlist list');
+            setRoleAttribute('dt', 'associationlistitemkey listitem');
+            setRoleAttribute('dd', 'associationlistitemvalue listitem');
+            setLinkAttributes('a', 'link', 'Link');
+        } catch (e) {
+            console.error("addAriaAttributes():", e);
+        }
+    }
+    // addAriaAttributes();
+    
+
     /**
      * ==================================
      * INJECT FORM_CONTROL, FORM SELECT
