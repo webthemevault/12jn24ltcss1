@@ -1,0 +1,45 @@
+@use "../utilities" as *;
+
+.tx-icon {
+
+    &.icon-xsmall {
+        svg {
+            height: 1.1rem;
+            width: 1.1rem;
+            @include flex-center-center();
+        }
+
+        i {
+            font-size: var(--#{$prefix}font-sm);
+        }
+    }
+
+    &.icon-small {
+        svg {
+            height: 1.5rem;
+            width: 1.5rem;
+            @include flex-center-center();
+        }
+
+        i {
+            font-size: var(--#{$prefix}font-body);
+        }
+    }
+
+    &.icon-medium {
+        svg {
+            height: 2rem;
+            width: 2rem;
+            @include flex-center-center();
+        }
+
+        i {
+            font-size: var(--#{$prefix}font-h6);
+        }
+    }
+
+    &.dark-icon {
+        fill: var(--#{$prefix}white);
+    }
+
+}

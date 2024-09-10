@@ -1,3 +1,242 @@
+(function ($) {
+    "use strict";
+
+    // Init Nav Menu
+    $(document).ready(function () {
+        $('.tx-initialize-menu').each(function (index, element) {
+            $(element).smartmenus();
+        });
+    });
+
+
+    // // Main Banner Slider
+    // $(document).ready(function () {
+    //     $('.edt-banner-sliders').slick({
+    //         slidesToShow: 1,
+    //         slidesToScroll: 1,
+    //         dots: true,
+    //         arrows: true,
+    //         fade: true,
+    //         speed: 800,
+    //         autoplay: true,
+    //         autoplaySpeed: 8000,
+    //         infinite: true,
+    //         cssEase: 'linear',
+    //         // adaptiveHeight: true,
+    //         appendArrows: $('.edt-banner-sliders-buttons'),
+    //         prevArrow: $('.prev-banner'),
+    //         nextArrow: $('.next-banner'),
+    //     });
+    // });
+
+    // $('.edt-testimonial-carousels').each(function(index, element) {
+    //     $(element).slick({
+    //         slidesToShow: 3,
+    //         slidesToScroll: 1,
+    //         arrows: true,
+    //         fade: false,
+    //         dots: true,
+    //         autoplay: false,
+    //         autoplaySpeed: 5000,
+    //         infinite: true,
+    //         cssEase: 'linear',
+    //         adaptiveHeight: true,
+    //         responsive: [
+    //             {
+    //                 breakpoint: 1000,
+    //                 settings: {
+    //                     slidesToShow: 2,
+    //                     slidesToScroll: 1,
+    //                     infinite: true,
+    //                     dots: true
+    //                 }
+    //             },
+    //             {
+    //                 breakpoint: 800,
+    //                 settings: {
+    //                     slidesToShow: 1,
+    //                     slidesToScroll: 1,
+    //                     infinite: true,
+    //                     dots: true
+    //                 }
+    //             },
+    //             {
+    //                 breakpoint: 600,
+    //                 settings: {
+    //                     slidesToShow: 1,
+    //                     slidesToScroll: 1,
+    //                     infinite: true,
+    //                     dots: false
+    //                 }
+    //             }
+    //         ]
+    //     });
+    // });
+
+    // $('.edt-hero-carousels-sm').each(function(index, element) {
+    //     $(element).slick({
+    //         slidesToShow: 1,
+    //         slidesToScroll: 1,
+    //         arrows: true,
+    //         fade: false,
+    //         dots: false,
+    //         autoplay: false,
+    //         autoplaySpeed: 5000,
+    //         infinite: true,
+    //         cssEase: 'linear',
+    //         adaptiveHeight: true,
+    //         appendArrows: $('.edt-hero-carousel-buttons'),
+    //         prevArrow: $('.prev'),
+    //         nextArrow: $('.next'),
+    //         responsive: [
+    //             {
+    //                 breakpoint: 1000,
+    //                 settings: {
+    //                     slidesToShow: 2,
+    //                     slidesToScroll: 1,
+    //                     infinite: true,
+    //                     dots: true
+    //                 }
+    //             },
+    //             {
+    //                 breakpoint: 800,
+    //                 settings: {
+    //                     slidesToShow: 1,
+    //                     slidesToScroll: 1,
+    //                     infinite: true,
+    //                     dots: true
+    //                 }
+    //             },
+    //             {
+    //                 breakpoint: 600,
+    //                 settings: {
+    //                     slidesToShow: 1,
+    //                     slidesToScroll: 1,
+    //                     infinite: true,
+    //                     dots: false
+    //                 }
+    //             }
+    //         ]
+    //     });
+    // });
+
+    // // Carousel Default sm
+    // $('.edt-carousel-default').each(function(index, element) {
+    //     $(element).slick({
+    //         slidesToShow: 3,
+    //         slidesToScroll: 1,
+    //         arrows: true,
+    //         fade: false,
+    //         dots: true,
+    //         autoplay: false,
+    //         autoplaySpeed: 5000,
+    //         infinite: true,
+    //         cssEase: 'linear',
+    //         adaptiveHeight: true,
+    //         // appendDots: $('.edt-carousel-dots'),
+    //         appendArrows: $('.edt-carousel-buttons'),
+    //         prevArrow: $('.prev'),
+    //         nextArrow: $('.next'),
+    //         responsive: [
+    //             {
+    //                 breakpoint: 1000,
+    //                 settings: {
+    //                     slidesToShow: 2,
+    //                     slidesToScroll: 1,
+    //                     infinite: true,
+    //                     dots: true
+    //                 }
+    //             },
+    //             {
+    //                 breakpoint: 800,
+    //                 settings: {
+    //                     slidesToShow: 1,
+    //                     slidesToScroll: 1,
+    //                     infinite: true,
+    //                     dots: true
+    //                 }
+    //             },
+    //             {
+    //                 breakpoint: 600,
+    //                 settings: {
+    //                     slidesToShow: 1,
+    //                     slidesToScroll: 1,
+    //                     infinite: true,
+    //                     dots: false
+    //                 }
+    //             }
+    //         ]
+    //     });
+    // });
+
+})(jQuery);
+window.addEventListener('DOMContentLoaded', (event) => {
+    /**
+     * ==========================
+     * SWITCH LIGHT / DARK MODE
+     * ==========================
+     */
+    function switchTheme() {
+        try {
+            let darkMode = localStorage.getItem("darkMode");
+            const switchModeToggles = document.querySelectorAll(".tx-theme-switch-btn");
+            const mainDoc = document.getElementsByTagName("html")[0];
+            const iconClass =   document.querySelector(".tx-theme-switch-btn .tx-icon");
+
+            const enableDarkMode = () => {
+                // Add class to the html
+                mainDoc.classList.add("dark");
+
+                // Add class to icon
+                iconClass.classList.add("dark-icon");
+
+                // update in the local storage
+                localStorage.setItem("darkMode", "enabled");
+            }
+
+            const disableDarkMode = () => {
+                // Add class to the html
+                mainDoc.classList.remove("dark");
+
+                // Add class to icon
+                iconClass.classList.remove("dark-icon");
+
+                // update in the local storage
+                localStorage.setItem("darkMode", null);
+            }
+
+            if (darkMode === "enabled") {
+                enableDarkMode();
+            }
+
+            switchModeToggles.forEach((switchModeToggle) => {
+
+                switchModeToggle.addEventListener("click", (e) => {
+
+                    e.preventDefault();
+
+                    darkMode = localStorage.getItem("darkMode");
+
+                    if (darkMode !== "enabled") {
+                        enableDarkMode();
+                        console.log(darkMode);
+                    } else {
+                        disableDarkMode();
+                        console.log(darkMode);
+                    }
+
+                });
+
+            });
+
+        } catch (e) {
+            console.log("switchTheme(): " + e);
+        }
+    }
+    switchTheme();
+
+});
+
 window.addEventListener('DOMContentLoaded', (event) => {
 
     /**
@@ -13,18 +252,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
             window.onscroll = function () { stickyFunction() };
 
             // Get the navbar
-            const header = document.querySelector(".ltv-site-header");
+            const header = document.querySelector(".tx-main-header");
 
             // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
             function stickyFunction() {
 
-                if (window.scrollY > 0) {
+                if (window.scrollY > 100) {
 
-                    header.classList.add("ltv-fixed-top");
+                    header.classList.add("tx-fixed-top");
 
                 } else {
 
-                    header.classList.remove("ltv-fixed-top");
+                    header.classList.remove("tx-fixed-top");
 
                 }
             }
@@ -91,7 +330,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             const fullSearch = document.querySelector("#fullsearch-container");
 
             // Menu Toggle
-            const collapseBtns = document.querySelectorAll(".ltv-toggle-fullsearch");
+            const collapseBtns = document.querySelectorAll(".edt-toggle-fullsearch");
 
             collapseBtns.forEach((collapseBtn) => {
                 collapseBtn.addEventListener('click', openSearch);
@@ -195,6 +434,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
      * NAVBAR COLLAPSE
      * ========================
      */
+    // Index 1
     function navbarCollapse() {
 
         try {
@@ -204,10 +444,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
             // Find the menu and its overlay
             const navbarMenu = document.querySelector("#sidebarMenu");
             const overlay = document.querySelector(".body-overlay");
-            const closeBtn = document.querySelector("#ltv-close-menu-btn");
+            const closeBtn = document.querySelector("#tx-close-menu-btn");
 
             // Menu Toggle
-            const collapseBtns = document.querySelectorAll(".ltv-sidebar-toggle");
+            const collapseBtns = document.querySelectorAll(".tx-sidebar-toggle");
 
             collapseBtns.forEach((collapseBtn) => {
                 collapseBtn.addEventListener('click', openSidebar);
@@ -297,11 +537,110 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
     navbarCollapse();
 
+    // Index 2
+    function collapseSidebar() {
+        try {
+            // Will hold previously focused element
+            var focusedElementBefore;
+
+            // Find the menu and its overlay
+            const navbarMenu = document.querySelector("#tx-sidebar");
+            const mainContent = document.querySelector("#tx-main");
+            const topHeader = document.querySelector("#tx-top-header");
+            const footer = document.querySelector("#tx-footer");
+
+            // Menu Toggle
+            const collapseBtns = document.querySelectorAll(".tx-sidebar-toggle");
+
+            collapseBtns.forEach((collapseBtn) => {
+                collapseBtn.addEventListener('click', openSidebar);
+            });
+
+            function openSidebar() {
+
+                collapseBtns.forEach((collapseBtn) => {
+                    collapseBtn.classList.toggle('open');
+                });
+
+                // Show Menu and Overlay
+                navbarMenu.classList.toggle("open");
+                mainContent.classList.toggle("open");
+                topHeader.classList.toggle("open");
+                footer.classList.toggle("open");
+
+            }
+
+        } catch (e) {
+            console.log("collapseSidebar(): " + e);
+        }
+    }
+    // collapseSidebar();
+
     /**
      * ====================
      * ADD ARIA DETAILS
      * ====================
      */
+    function addDataARIA() {
+        try {
+            var allTables = document.querySelectorAll('table');
+            for (var i = 0; i < allTables.length; i++) {
+                allTables[i].setAttribute('role', 'table');
+            }
+            var allCaptions = document.querySelectorAll('caption');
+            for (var i = 0; i < allCaptions.length; i++) {
+                allCaptions[i].setAttribute('role', 'caption');
+            }
+            var allRowGroups = document.querySelectorAll('thead, tbody, tfoot');
+            for (var i = 0; i < allRowGroups.length; i++) {
+                allRowGroups[i].setAttribute('role', 'rowgroup');
+            }
+            var allRows = document.querySelectorAll('tr');
+            for (var i = 0; i < allRows.length; i++) {
+                allRows[i].setAttribute('role', 'row');
+            }
+            var allCells = document.querySelectorAll('td');
+            for (var i = 0; i < allCells.length; i++) {
+                allCells[i].setAttribute('role', 'cell');
+            }
+            var allHeaders = document.querySelectorAll('th');
+            for (var i = 0; i < allHeaders.length; i++) {
+                allHeaders[i].setAttribute('role', 'columnheader');
+            }
+            // this accounts for scoped row headers
+            var allRowHeaders = document.querySelectorAll('th[scope=row]');
+            for (var i = 0; i < allRowHeaders.length; i++) {
+                allRowHeaders[i].setAttribute('role', 'rowheader');
+            }
+
+            // List Aria
+            var allLists = document.querySelectorAll("ol, ul");
+            for (var i = 0; i < allLists.length; i++) {
+                allLists[i].setAttribute("role", "list");
+            }
+            var allListItems = document.querySelectorAll("li");
+            for (var i = 0; i < allListItems.length; i++) {
+                allListItems[i].setAttribute("role", "listitem");
+            }
+            var allDefLists = document.querySelectorAll("dl");
+            for (var i = 0; i < allDefLists.length; i++) {
+                allDefLists[i].setAttribute("role", "associationlist list");
+            }
+            var allDefTerms = document.querySelectorAll("dt");
+            for (var i = 0; i < allDefTerms.length; i++) {
+                allDefTerms[i].setAttribute("role", "associationlistitemkey listitem");
+            }
+            var allDefItems = document.querySelectorAll("dd");
+            for (var i = 0; i < allDefItems.length; i++) {
+                allDefItems[i].setAttribute("role", "associationlistitemvalue listitem");
+            }
+
+        } catch (e) {
+            console.log("addDataARIA(): " + e);
+        }
+    }
+    addDataARIA();
+
     function addAriaAttributes() {
 
         function setRoleAttribute(selector, role) {
@@ -341,8 +680,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.error("addAriaAttributes():", e);
         }
     }
-    addAriaAttributes();
+    // addAriaAttributes();
     
+
     /**
      * ==================================
      * INJECT FORM_CONTROL, FORM SELECT
@@ -408,7 +748,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.log("injectBsFormClasses(): " + e);
         }
     }
-    // injectBsFormClasses();
+    injectBsFormClasses();
 
     /**
      * =====================================
@@ -452,48 +792,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
             behavior: 'smooth'
         });
     }
-
-    /**
-     * =======================
-     * NAV TABS
-     * =======================
-     */
-    function initNavTabs() {
-
-        try {
-
-            document.querySelectorAll('.ltv-tabs').forEach(tabsContainer => {
-
-                const tabButtons = tabsContainer.querySelectorAll('.tab-button');
-                const tabContents = tabsContainer.querySelectorAll('.tab');
-            
-                tabButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const tabData = button.getAttribute('data-tab');
-                        
-                        // Remove active class from all tab buttons
-                        tabButtons.forEach(btn => btn.classList.remove('active'));
-                        
-                        // Add active class to clicked button
-                        button.classList.add('active');
-                        
-                        // Hide all tab content
-                        tabContents.forEach(tab => tab.classList.remove('active'));
-                        
-                        // Show the selected tab content
-                        tabsContainer.querySelector(`.tab[data-tab-content="${tabData}"]`).classList.add('active');
-                    });
-                });
-            
-                // Trigger the first tab to be active on page load
-                tabButtons[0].click();
-            });            
-            
-        } catch (e) {
-            console.log("initNavTabs(): " + e );
-        }
-
-    }
-    initNavTabs();
 
 });

@@ -1,0 +1,51 @@
+@use "../utilities" as *;
+
+:root {
+
+    @each $color-stack, $value in $color-combs {
+        --#{$prefix}#{$color-stack}: #{$value};
+    }
+
+    @each $color-stack, $color-map in $color-mixes {
+
+        @each $color,$value in $color-map {
+            --#{$prefix}#{$color-stack}-#{$color}: #{$value};
+        }
+    }
+
+    @each $typo-stack, $typo-map in $typo-mixes {
+
+        @each $typo,$value in $typo-map {
+            --#{$prefix}#{$typo-stack}-#{$typo}: #{$value};
+        }
+    }
+
+    @each $size-stack, $size-map in $size-mixes {
+
+        @each $size,$value in $size-map {
+            --#{$prefix}#{$size-stack}-#{$size}: #{$value};
+        }
+    }
+
+    @each $radius-stack, $radius-map in $radius-mixes {
+
+        @each $radius,$value in $radius-map {
+            --#{$prefix}#{$radius-stack}-#{$radius}: #{$value};
+        }
+    }
+
+}
+
+
+html.dark {
+    --#{$prefix}background: #{$darktheme};
+    --#{$prefix}text: #ffffff;
+    --#{$prefix}darkhover: #{$gray-200};
+    --#{$prefix}line: #{$gray-800};
+    --#{$prefix}darkblue: #1a1a1a;
+    --#{$prefix}theme: #585858;
+
+    .light-hidden {
+        display: none !important;
+    }
+}

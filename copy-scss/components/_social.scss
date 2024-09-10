@@ -1,0 +1,185 @@
+@use "../utilities" as *;
+
+.tx-social-follow {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    gap: rem(5);
+
+    .social-icon {
+        @include flex-center-center();
+        height: 2.8rem;
+        width: 2.8rem;
+        font-size: var(--#{$prefix}font-sm);
+        border: none;
+        border-radius: 0;
+        box-shadow: 0 0.25rem 0.25rem rgb(0 0 0 / 10%);
+        @include setTransition();
+
+        &:hover {
+            background-color: var(--#{$prefix}gray-50);
+            color: var(--#{$prefix}white);
+        }
+    }
+}
+
+.tx-post-share {
+    padding: 1rem 0;
+
+    .title {
+        font-size: var(--#{$prefix}font-sm);
+        font-weight: bold;
+    }
+
+    .share-icons {
+        @include flex-center-start();
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .icon-container {
+        height: 100%;
+        width: 2.5rem;
+        @include flex-center-center();
+        border-radius: 0;
+        border: none;
+    }
+
+    .icon-name {
+        display: none;
+    }
+
+    .share-icon {
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        border-radius: 0;
+        font-size: var(--#{$prefix}font-xs);
+
+        &.facebook {
+            .icon-container {
+                background-color: var(--#{$prefix}facebook);
+                color: var(--#{$prefix}white);
+            }
+
+            .icon-name {
+                background-color: var(--#{$prefix}facebook);
+            }
+        }
+
+        &.twitter {
+            .icon-container {
+                background-color: var(--#{$prefix}twitter);
+                color: var(--#{$prefix}white);
+            }
+
+            .icon-name {
+                background-color: var(--#{$prefix}twitter);
+            }
+        }
+
+        &.linkedin {
+            .icon-container {
+                background-color: var(--#{$prefix}linkedin);
+                color: var(--#{$prefix}white);
+            }
+
+            .icon-name {
+                background-color: var(--#{$prefix}linkedin);
+            }
+        }
+
+        &.youtube {
+            .icon-container {
+                background-color: var(--#{$prefix}youtube);
+                color: var(--#{$prefix}white);
+            }
+
+            .icon-name {
+                background-color: var(--#{$prefix}youtube);
+            }
+        }
+
+        &.vk {
+            .icon-container {
+                background-color: var(--#{$prefix}vk);
+                color: var(--#{$prefix}white);
+            }
+
+            .icon-name {
+                background-color: var(--#{$prefix}vk);
+            }
+        }
+
+        &.telegram {
+            .icon-container {
+                background-color: var(--#{$prefix}telegram);
+                color: var(--#{$prefix}white);
+            }
+
+            .icon-name {
+                background-color: var(--#{$prefix}telegram);
+            }
+        }
+
+        &.instagram {
+            .icon-container {
+                background-color: var(--#{$prefix}instagram);
+                color: var(--#{$prefix}white);
+            }
+
+            .icon-name {
+                background-color: var(--#{$prefix}instagram);
+            }
+        }
+
+        &.pinterest {
+            .icon-container {
+                background-color: var(--#{$prefix}pinterest);
+                color: var(--#{$prefix}white);
+            }
+
+            .icon-name {
+                background-color: var(--#{$prefix}pinterest);
+            }
+        }
+
+        &.whatsapp {
+            .icon-container {
+                background-color: var(--#{$prefix}whatsapp);
+                color: var(--#{$prefix}white);
+            }
+
+            .icon-name {
+                background-color: var(--#{$prefix}whatsapp);
+            }
+        }
+    }
+
+    @include breakpoint-up(md) {
+
+        .icon-container {
+            height: 100%;
+            width: 2.5rem;
+            @include flex-center-center();
+            border-radius: 0;
+            border-top-left-radius: rem(3);
+            border-bottom-left-radius: rem(3);
+            border-right: 1px solid rgba(200 200 200 / 50%);
+        }
+
+        .icon-name {
+            padding: 0 0.85rem;
+            font-size: var(--#{$prefix}font-xs);
+            font-weight: 300;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            color: var(--#{$prefix}white);
+            border: none;
+            border-radius: 0;
+            border-top-right-radius: rem(3);
+            border-bottom-right-radius: rem(3);
+        }
+    }
+}

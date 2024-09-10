@@ -1,0 +1,258 @@
+@use "../utilities"as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--#{$prefix}background);
+    // color: var(--#{$prefix}white);
+    color: var(--#{$prefix}text);
+    font-family: var(--#{$prefix}font-poppins);
+    font-size: 1rem;
+    line-height: 1.5;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: var(--#{$prefix}font-poppins);
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.container-fluid {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+
+    @include breakpoint-up(md) {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    @include breakpoint-up(lg) {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+.tx-container {
+    width: 1400px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+
+    @include breakpoint-up(md) {
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+
+    @include breakpoint-up(lg) {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+ul,ol {
+    padding: 0;
+    margin: 0;
+    padding-left: 1.4rem;
+
+    li {
+        font-size: var(--#{$prefix}font-body);
+    }
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus {
+        outline: 2px solid;
+    }
+
+}
+
+.sameheight {
+    height: 100%;
+    min-height: 100%;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+
+    &.absolute-0 {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+.img-container {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0 0 0 / 50%);
+}
+
+.body-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    opacity: 0;
+    @include setTransition(0.5s);
+    z-index: 9999;
+
+    &.show {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    @include breakpoint-up(md) {
+        display: none;
+    }
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.image-cover {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.img-centered-bg {
+    @include img-background();
+}
+
+.img-link {
+    &:focus {
+        border: 2px solid var(--#{$prefix}text);
+    }
+}
+
+.overlay-gradient-to-top {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 10%, #000 100%);
+    @include setTransition();
+}
+
+.overlay-gradient-to-bottom {
+    background-color: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, #000 100%);
+    @include setTransition();
+}
+
+.mobile-hide {
+    @include breakpoint-down(md) {
+        display: none !important;
+    }
+}
+
+.desktop-hide {
+    @include breakpoint-up(md) {
+        display: none !important;
+    }
+}
+
+.post-thumbnail {
+    height: 100%;
+
+    img[class] {
+        height: 100%;
+    }
+}
+
+.remove-section {
+    display: none;
+}
+
+.tx-grid-3-columns-wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+
+    @include breakpoint-up(sm) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint-up(md) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.tx-grid-4-columns-wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+
+    @include breakpoint-up(sm) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include breakpoint-up(md) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.tx-grid-5-columns-wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+
+    @include breakpoint-up(sm) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include breakpoint-up(md) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+

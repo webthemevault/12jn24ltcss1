@@ -1,0 +1,63 @@
+@use "../utilities" as *;
+
+.tx-page-header-container {
+    @include flex-start-end(column);
+    min-height: 200px;
+
+    @include breakpoint-up(md) {
+        min-height: 250px;
+    }
+}
+
+.tx-page-header-content {
+    color: var(--#{$prefix}white);
+    position: relative;
+    padding: 2rem 0;
+    @include flex-start-end(column);
+    width: 100%;
+    height: 100%;
+    color: var(--#{$prefix}white);
+
+    @include breakpoint-up(md) {
+        width: 80%;
+    }
+
+    .small-heading {
+        font-size: var(--#{$prefix}font-sm);
+        text-transform: uppercase;
+        color: var(--#{$prefix}white);
+    }
+
+    .page-title {
+        font-size: var(--#{$prefix}font-h2);
+        font-weight: bold;
+        line-height: 1.25;
+
+        span {
+            font-size: var(--#{$prefix}font-h4);
+        }
+    }
+
+    .description {
+        font-size: var(--#{$prefix}font-sm);
+        margin-top: 0.5rem;
+
+        p {
+            font-size: var(--#{$prefix}font-sm);
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+
+tx-page-no-page-header {
+    .tx-page-header-container {
+        display: none;
+    }
+}
+
+.tx-single-page-header {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid var(--#{$prefix}line);
+}

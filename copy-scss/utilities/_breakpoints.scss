@@ -1,0 +1,19 @@
+// 480px, 768px, 992px, 1200px, 1400px, 1600px
+$breakpoints: (
+    'xs': 30em,
+    'sm': 48em,
+    'md': 62em,
+    'lg': 75em,
+    'xl': 87.5em,
+    '2xl': 100em,
+);
+
+// 479px, 767px, 991px, 1199px, 1399px, 1599px
+$breakpoints-down: (
+    'xs': 29.9em,
+    'sm': 47.9em,
+    'md': 61.9em,
+    'lg': 74.9em,
+    'xl': 87.4em,
+    '2xl': 99.9em,
+);

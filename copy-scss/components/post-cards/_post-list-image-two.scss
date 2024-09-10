@@ -1,0 +1,181 @@
+@use "../../utilities" as *;
+
+.tx-post-list-image-two {
+    display: flex;
+    flex-wrap: nowrap;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    @include setTransition();
+    
+    .post-thumbnail {
+        position: relative;
+        display: inline-block;
+        height: 80px;
+        width: 30%;
+        border-radius: 0.5rem;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            @include setTransition();
+        }
+
+        &:hover {
+            img {
+                transform: scale(1.08);
+            }
+        }
+    }
+
+    .tx-post-list-image-text {
+        flex: 1;
+        display: block;
+        padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+        height: auto;
+    
+        .tx-post-date{
+            font-size: var(--#{$prefix}font-sm);
+            letter-spacing: normal;
+            display: flex;
+            align-items: center;
+            column-gap: 0.35rem;
+            flex-wrap: nowrap;
+            margin-top: 0.75rem;
+    
+            span,a {
+                font-size: var(--#{$prefix}font-sm);
+            }
+    
+            .tx-icon svg {
+                height: 0.85rem;
+                width: 0.85rem;
+                fill: var(--#{$prefix}text);
+            }
+    
+            @include breakpoint-up(md) {
+                font-size: var(--#{$prefix}font-xs);
+    
+                span,a {
+                    font-size: var(--#{$prefix}font-xs);
+                }
+            }
+        }
+    
+        .tx-post-title {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            line-height: 1.35;
+            font-size: var(--#{$prefix}font-body);
+            font-weight: bold;
+            @include setTransition();
+
+            @include breakpoint-up(md) {
+                font-size: var(--#{$prefix}font-sm);
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.tx-widget-area {
+
+    .tx-post-list-image-text {
+
+        .tx-post-title {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            line-height: 1.35;
+            font-size: var(--#{$prefix}font-body);
+            font-weight: bold;
+            @include setTransition();
+        }
+    }
+}
+
+.tx-footer {
+
+    .tx-post-list-image-two {
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+        
+        .post-thumbnail {
+            height: 70px;
+            width: 25%;
+        }
+    
+        .tx-post-list-image-text {
+            flex: 1;
+            display: block;
+            padding: 0.25rem 0.25rem 0.25rem 0.45rem;
+            height: auto;
+        
+            .tx-post-date{
+                font-size: var(--#{$prefix}font-sm);
+                letter-spacing: normal;
+                display: flex;
+                align-items: center;
+                column-gap: 0.25rem;
+                flex-wrap: nowrap;
+                margin-top: 0.5rem;
+        
+                span,a {
+                    font-size: var(--#{$prefix}font-sm);
+                }
+        
+                .tx-icon svg {
+                    height: 0.85rem;
+                    width: 0.85rem;
+                    fill: var(--#{$prefix}text);
+                }
+        
+                @include breakpoint-up(md) {
+                    font-size: var(--#{$prefix}font-xs);
+        
+                    span,a {
+                        font-size: var(--#{$prefix}font-xs);
+                    }
+                }
+            }
+        
+            .tx-post-title {
+                position: relative;
+                padding: 0;
+                margin: 0;
+                line-height: 1.35;
+                font-size: var(--#{$prefix}font-sm);
+                font-weight: bold;
+                @include setTransition();
+            }
+        }
+    }
+}
+
+.tx-how-to-process {
+
+    .tx-small-heading {
+        font-size: var(--#{$prefix}font-sm);
+
+        p {
+            font-size: var(--#{$prefix}font-sm);
+        }
+
+        @include breakpoint-up(md) {
+            font-size: var(--#{$prefix}font-xs);
+
+            p {
+                font-size: var(--#{$prefix}font-xs);
+            }
+        }
+    }
+}

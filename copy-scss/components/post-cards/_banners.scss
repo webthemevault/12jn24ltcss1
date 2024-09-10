@@ -1,0 +1,55 @@
+@use "../../utilities" as *;
+
+.tx-banner-horizontal {
+    position: relative;
+    min-height: 30rem;
+    color: var(--#{$prefix}white);
+    padding: 2.5rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: block;
+    align-content: center;
+    box-shadow: 0 0.25rem 0.85rem rgba(46, 68, 161, 0.12);
+}
+
+.tx-banner-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+
+    @include breakpoint-up(md) {
+        width: 55%;
+    }
+
+    .tx-small-heading {
+        font-size: var(--#{$prefix}font-sm);
+    }
+
+    .tx-title {
+        font-size: var(--#{$prefix}font-h2);
+        font-weight: bold;
+        line-height: 1.2;
+    }
+
+    .tx-description {
+        font-size: 1rem;
+    }
+
+    .btn-container {
+        margin-top: 0.5rem;
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            background: var(--#{$prefix}white);
+            color: var(--#{$prefix}dark);
+            padding: 1em 2.2em;
+            @include setTransition();
+        }
+    }
+}
+

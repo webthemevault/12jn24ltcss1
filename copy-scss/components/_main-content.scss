@@ -1,0 +1,297 @@
+@use "../utilities" as *;
+
+.tx-main-section-header {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1rem;
+
+    .tx-title {
+        font-size: var(--#{$prefix}font-h2);
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .tx-description {
+        padding: 0;
+        margin: 0;
+        margin-top: 0.5rem;
+        font-size: var(--#{$prefix}font-body);
+        font-weight: normal;
+        line-height: 1.3;
+    }
+}
+
+.tx-section-header {
+    padding: 0.5rem 0;
+    margin: 0;
+    margin-bottom: 1rem;
+
+    .tx-small-heading {
+        font-size: var(--#{$prefix}font-sm);
+    }
+
+    .tx-title {
+        font-size: var(--#{$prefix}font-h5);
+        font-weight: bold;
+        padding: 0;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .tx-description {
+        padding: 0;
+        margin: 0;
+        margin-top: 0.5rem;
+        font-size: var(--#{$prefix}font-sm);
+        font-weight: normal;
+        line-height: 1.3;
+    }
+}
+
+.tx-main-template {
+
+    .tx-main {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+
+        .tx-content-wrapper {
+            display: block;
+            width: 100%;
+
+            @include breakpoint-up(md) {
+                display: grid;
+                grid-template-columns: 70% 30%;
+    
+                .tx-site-content {
+                    padding-right: 1.5rem;
+                    border-right: 1px solid var(--#{$prefix}line);
+                }
+    
+                .tx-widget-area {
+                    padding-left: 1.5rem;
+                }
+            }
+        }
+    
+        &.fullwidth {
+            padding-top: 0;
+            padding-bottom: 0;
+    
+            .entry-content {
+                margin: 0;
+            }
+        }
+    
+        .widget {
+            margin-bottom: 5rem;
+    
+            &:last-of-type {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+
+    &.tx-fullwidth-page {
+
+        .tx-content-wrapper {
+            display: block;
+            width: 100%;
+
+            @include breakpoint-up(md) {
+                .tx-site-content {
+                    padding-right: 0;
+                    border-right: none;
+                }
+    
+                .tx-widget-area {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &.tx-page-no-padding {
+        .tx-main {
+            padding: 0;
+            padding-bottom: 0;
+        }
+
+        .tx-container {
+            padding-right: 0;
+            padding-left: 0;
+            width: 100%;
+        }
+    }
+
+    &.tx-page-no-breadcrumb {
+        .tx-breadcrumb-container {
+            display: none;
+        }
+    }
+
+    &.tx-post-no-title {
+        .tx-single-post-title {
+            display: none;
+        }
+    }
+
+    &.tx-no-social-share {
+        .tx-post-share {
+            display: none;
+        }
+    }
+
+    &.tx-page-no-page-header {
+        .tx-page-header-container {
+            display: none;
+        }
+    }
+
+    &.tx-archive-page {
+
+        .tx-page-content {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+    
+            @include breakpoint-up(md) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        &.tx-fullwidth-page {
+            .tx-content-wrapper {
+                width: 100%;
+                display: block;
+            }
+
+            .tx-site-content {
+                padding-right: 0;
+                border-right: none;
+            }
+        
+            .tx-page-content {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 1.5rem;
+        
+                @include breakpoint-up(md) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+        
+                @include breakpoint-up(lg) {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            .tx-posts-pagination-container {
+                @include flex-center-center();
+            }
+        
+            .tx-widget-area {
+                display: none;
+            }
+        }
+    }
+
+    &.tx-page-template-default {
+
+        .tx-page-content {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+        }
+
+        &.tx-fullwidth-page {
+            
+            .tx-content-wrapper {
+                width: 100%;
+                display: block;
+            }
+
+            .tx-site-content {
+                padding-right: 0;
+                border-right: none;
+            }
+        
+            .tx-page-content {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 1.5rem;
+        
+                @include breakpoint-up(md) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+        
+                @include breakpoint-up(lg) {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
+
+            .tx-posts-pagination-container {
+                @include flex-center-center();
+            }
+        
+            .tx-widget-area {
+                display: none;
+            }
+        }
+    }
+
+    .tx-widget-area {
+        margin-top: 2.5rem;
+
+        @include breakpoint-up(md) {
+            margin-top: 0;
+        }
+    
+        .widget {
+            margin-bottom: 2.5rem;
+    
+            ul {
+                list-style: square;
+                padding-left: 1.25em;
+            }
+    
+            ol {
+                padding-left: 0;
+            }
+        }
+    }
+    
+    .widget {
+    
+        .widget-title,
+        .wp-block-heading {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            font-size: var(--#{$prefix}font-h6);
+            font-weight: bold;
+            position: relative;
+            border-bottom: 4px solid var(--#{$prefix}gray-200);
+        
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -4px;
+                // bottom: 0;
+                left: 0;
+                width: 5rem;
+                height: 4px;
+                background-color: var(--#{$prefix}theme);
+                // background-color: var(--#{$prefix}text);
+        
+            }
+        }
+    
+    }
+
+    .widget:has(.tx-bottom-null) {
+        margin-bottom: 0;
+    }
+    
+}

@@ -13,18 +13,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
             window.onscroll = function () { stickyFunction() };
 
             // Get the navbar
-            const header = document.querySelector(".ltv-site-header");
+            const header = document.querySelector(".tx-main-header");
 
             // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
             function stickyFunction() {
 
-                if (window.scrollY > 0) {
+                if (window.scrollY > 100) {
 
-                    header.classList.add("ltv-fixed-top");
+                    header.classList.add("tx-fixed-top");
 
                 } else {
 
-                    header.classList.remove("ltv-fixed-top");
+                    header.classList.remove("tx-fixed-top");
 
                 }
             }
@@ -91,7 +91,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             const fullSearch = document.querySelector("#fullsearch-container");
 
             // Menu Toggle
-            const collapseBtns = document.querySelectorAll(".ltv-toggle-fullsearch");
+            const collapseBtns = document.querySelectorAll(".edt-toggle-fullsearch");
 
             collapseBtns.forEach((collapseBtn) => {
                 collapseBtn.addEventListener('click', openSearch);
@@ -195,6 +195,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
      * NAVBAR COLLAPSE
      * ========================
      */
+    // Index 1
     function navbarCollapse() {
 
         try {
@@ -204,10 +205,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
             // Find the menu and its overlay
             const navbarMenu = document.querySelector("#sidebarMenu");
             const overlay = document.querySelector(".body-overlay");
-            const closeBtn = document.querySelector("#ltv-close-menu-btn");
+            const closeBtn = document.querySelector("#tx-close-menu-btn");
 
             // Menu Toggle
-            const collapseBtns = document.querySelectorAll(".ltv-sidebar-toggle");
+            const collapseBtns = document.querySelectorAll(".tx-sidebar-toggle");
 
             collapseBtns.forEach((collapseBtn) => {
                 collapseBtn.addEventListener('click', openSidebar);
@@ -297,11 +298,110 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
     navbarCollapse();
 
+    // Index 2
+    function collapseSidebar() {
+        try {
+            // Will hold previously focused element
+            var focusedElementBefore;
+
+            // Find the menu and its overlay
+            const navbarMenu = document.querySelector("#tx-sidebar");
+            const mainContent = document.querySelector("#tx-main");
+            const topHeader = document.querySelector("#tx-top-header");
+            const footer = document.querySelector("#tx-footer");
+
+            // Menu Toggle
+            const collapseBtns = document.querySelectorAll(".tx-sidebar-toggle");
+
+            collapseBtns.forEach((collapseBtn) => {
+                collapseBtn.addEventListener('click', openSidebar);
+            });
+
+            function openSidebar() {
+
+                collapseBtns.forEach((collapseBtn) => {
+                    collapseBtn.classList.toggle('open');
+                });
+
+                // Show Menu and Overlay
+                navbarMenu.classList.toggle("open");
+                mainContent.classList.toggle("open");
+                topHeader.classList.toggle("open");
+                footer.classList.toggle("open");
+
+            }
+
+        } catch (e) {
+            console.log("collapseSidebar(): " + e);
+        }
+    }
+    // collapseSidebar();
+
     /**
      * ====================
      * ADD ARIA DETAILS
      * ====================
      */
+    function addDataARIA() {
+        try {
+            var allTables = document.querySelectorAll('table');
+            for (var i = 0; i < allTables.length; i++) {
+                allTables[i].setAttribute('role', 'table');
+            }
+            var allCaptions = document.querySelectorAll('caption');
+            for (var i = 0; i < allCaptions.length; i++) {
+                allCaptions[i].setAttribute('role', 'caption');
+            }
+            var allRowGroups = document.querySelectorAll('thead, tbody, tfoot');
+            for (var i = 0; i < allRowGroups.length; i++) {
+                allRowGroups[i].setAttribute('role', 'rowgroup');
+            }
+            var allRows = document.querySelectorAll('tr');
+            for (var i = 0; i < allRows.length; i++) {
+                allRows[i].setAttribute('role', 'row');
+            }
+            var allCells = document.querySelectorAll('td');
+            for (var i = 0; i < allCells.length; i++) {
+                allCells[i].setAttribute('role', 'cell');
+            }
+            var allHeaders = document.querySelectorAll('th');
+            for (var i = 0; i < allHeaders.length; i++) {
+                allHeaders[i].setAttribute('role', 'columnheader');
+            }
+            // this accounts for scoped row headers
+            var allRowHeaders = document.querySelectorAll('th[scope=row]');
+            for (var i = 0; i < allRowHeaders.length; i++) {
+                allRowHeaders[i].setAttribute('role', 'rowheader');
+            }
+
+            // List Aria
+            var allLists = document.querySelectorAll("ol, ul");
+            for (var i = 0; i < allLists.length; i++) {
+                allLists[i].setAttribute("role", "list");
+            }
+            var allListItems = document.querySelectorAll("li");
+            for (var i = 0; i < allListItems.length; i++) {
+                allListItems[i].setAttribute("role", "listitem");
+            }
+            var allDefLists = document.querySelectorAll("dl");
+            for (var i = 0; i < allDefLists.length; i++) {
+                allDefLists[i].setAttribute("role", "associationlist list");
+            }
+            var allDefTerms = document.querySelectorAll("dt");
+            for (var i = 0; i < allDefTerms.length; i++) {
+                allDefTerms[i].setAttribute("role", "associationlistitemkey listitem");
+            }
+            var allDefItems = document.querySelectorAll("dd");
+            for (var i = 0; i < allDefItems.length; i++) {
+                allDefItems[i].setAttribute("role", "associationlistitemvalue listitem");
+            }
+
+        } catch (e) {
+            console.log("addDataARIA(): " + e);
+        }
+    }
+    addDataARIA();
+
     function addAriaAttributes() {
 
         function setRoleAttribute(selector, role) {
@@ -341,8 +441,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.error("addAriaAttributes():", e);
         }
     }
-    addAriaAttributes();
+    // addAriaAttributes();
     
+
     /**
      * ==================================
      * INJECT FORM_CONTROL, FORM SELECT
@@ -408,7 +509,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.log("injectBsFormClasses(): " + e);
         }
     }
-    // injectBsFormClasses();
+    injectBsFormClasses();
 
     /**
      * =====================================
@@ -452,48 +553,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
             behavior: 'smooth'
         });
     }
-
-    /**
-     * =======================
-     * NAV TABS
-     * =======================
-     */
-    function initNavTabs() {
-
-        try {
-
-            document.querySelectorAll('.ltv-tabs').forEach(tabsContainer => {
-
-                const tabButtons = tabsContainer.querySelectorAll('.tab-button');
-                const tabContents = tabsContainer.querySelectorAll('.tab');
-            
-                tabButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const tabData = button.getAttribute('data-tab');
-                        
-                        // Remove active class from all tab buttons
-                        tabButtons.forEach(btn => btn.classList.remove('active'));
-                        
-                        // Add active class to clicked button
-                        button.classList.add('active');
-                        
-                        // Hide all tab content
-                        tabContents.forEach(tab => tab.classList.remove('active'));
-                        
-                        // Show the selected tab content
-                        tabsContainer.querySelector(`.tab[data-tab-content="${tabData}"]`).classList.add('active');
-                    });
-                });
-            
-                // Trigger the first tab to be active on page load
-                tabButtons[0].click();
-            });            
-            
-        } catch (e) {
-            console.log("initNavTabs(): " + e );
-        }
-
-    }
-    initNavTabs();
 
 });

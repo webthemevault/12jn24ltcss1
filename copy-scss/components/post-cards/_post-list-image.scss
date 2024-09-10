@@ -1,0 +1,128 @@
+@use "../../utilities" as *;
+
+.tx-post-list-image,
+.tx-post-list-image-wrapper a,
+.tx-post-list-image-wrapper > div {
+    display: flex;
+    flex-wrap: nowrap;
+    border: 1px solid rgb(150 150 150 / 25%);
+    box-shadow: 0 0 0.5rem rgb(150 150 150 / 30%);
+    width: 100%;
+    min-height: 80px;
+    border-radius: 0.5rem;
+    @include setTransition();
+    overflow: hidden;
+    
+    .post-thumbnail {
+        position: relative;
+        display: inline-block;
+        height: auto;
+        width: 30%;
+        // border-radius: 0.5rem;
+        // border-top-right-radius: 0;
+        // border-bottom-right-radius: 0;
+        overflow: hidden;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    
+    .tx-post-list-image-text {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        row-gap: 0.5rem;
+        padding: 0.25rem 0.25rem 0.25rem 0.65rem;
+        height: auto;
+
+        .tx-post-price-from {
+            font-size: var(--#{$prefix}font-sm);
+            letter-spacing: -0.05rem;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+
+            span {
+                @include flex-center-between();
+                font-size: var(--#{$prefix}font-sm);
+            }
+
+            @include breakpoint-up(md) {
+                font-size: var(--#{$prefix}font-xs);
+
+                span {
+                    font-size: var(--#{$prefix}font-xs);
+                }
+            }
+        }
+
+        .tx-post-meta {
+            font-size: var(--#{$prefix}font-sm);
+            letter-spacing: -0.05rem;
+            display: flex;
+            align-items: center;
+
+            span {
+                display: flex;
+                align-items: center;
+                font-size: var(--#{$prefix}font-sm);
+            }
+
+            @include breakpoint-up(md) {
+                font-size: var(--#{$prefix}font-xs);
+
+                span {
+                    font-size: var(--#{$prefix}font-xs);
+                }
+            }
+        }
+
+        .tx-post-title {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            line-height: 1.45;
+            font-size: var(--#{$prefix}font-sm);
+            font-weight: bold;
+            letter-spacing: 0.015rem;
+            @include setTransition();
+
+            a {
+                @include setTransition();
+            }
+
+            &:hover {
+                a {
+                    text-decoration: underline;
+                }
+            }
+
+            @include breakpoint-up(md) {
+                font-size: var(--#{$prefix}font-xs);
+            }
+        }
+    }
+}
+
+.tx-how-to-process {
+
+    .tx-small-heading {
+        font-size: var(--#{$prefix}font-sm);
+
+        p {
+            font-size: var(--#{$prefix}font-sm);
+        }
+
+        @include breakpoint-up(md) {
+            font-size: var(--#{$prefix}font-xs);
+
+            p {
+                font-size: var(--#{$prefix}font-xs);
+            }
+        }
+    }
+}

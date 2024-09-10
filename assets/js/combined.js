@@ -1,175 +1,162 @@
 (function ($) {
     "use strict";
 
+    $('.ltv-owl-carousel-default').each(function(index, element) {
+        var $element = $(element);
+        
+        // Override options using data attributes
+        var items = $element.data('items') || 5;
+        var loop = $element.data('loop') !== undefined ? $element.data('loop') : true;
+        var margin = $element.data('margin') || 15;
+        var center = $element.data('center') || false;
+        var dots = $element.data('dots') || false;
+        var nav = $element.data('nav') !== undefined ? $element.data('nav') : true;
+        var navText = $element.data('nav-text') || ['<i class="fa-solid fa-arrow-left"></i>', '<i class="fa-solid fa-arrow-right"></i>'];
+    
+        $element.owlCarousel({
+            items: items,
+            loop: loop,
+            margin: margin,
+            center: center,
+            dots: dots,
+            nav: nav,
+            navText: navText,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: $element.data('responsive-0-items') || 2,
+                    nav: $element.data('responsive-0-nav') !== undefined ? $element.data('responsive-0-nav') : nav,
+                    loop: $element.data('responsive-0-loop') !== undefined ? $element.data('responsive-0-loop') : loop
+                },
+                600: {
+                    items: $element.data('responsive-600-items') || 3,
+                    nav: $element.data('responsive-600-nav') !== undefined ? $element.data('responsive-600-nav') : nav,
+                    loop: $element.data('responsive-600-loop') !== undefined ? $element.data('responsive-600-loop') : loop
+                },
+                1000: {
+                    items: $element.data('responsive-1000-items') || 5,
+                    nav: $element.data('responsive-1000-nav') !== undefined ? $element.data('responsive-1000-nav') : nav,
+                    loop: $element.data('responsive-1000-loop') !== undefined ? $element.data('responsive-1000-loop') : loop
+                }
+            }
+        });
+    });
+    
+
+    $('.ltv-whyus-owl-carousels').owlCarousel({
+        items: 3,
+        loop:true,
+        margin:20,
+        center: false,
+        dots: false,
+        nav:false,
+        navText: ['<i class="fa-solid fa-arrow-left"></i>', '<i class="fa-solid fa-arrow-right"></i>'],
+        responsiveClass: true,
+            responsive:{
+                0:{
+                    items:1,
+                    loop:true,
+                },
+                600:{
+                    items:2,
+                    loop:true,
+                },
+                1000:{
+                    items:3,
+                    loop:true,
+                }
+            }
+    });
+
+})(jQuery);
+
+(function($) {
+
+    $.SmartMenus.prototype.old_init = $.SmartMenus.prototype.init;
+    $.SmartMenus.prototype.init = function(refresh) {
+      if (!refresh && !this.$root.hasClass('sm-vertical')) {
+        var $originalItems = this.$root.children('li'),
+          $moreSub = this.$root.clone().removeAttr('id').removeAttr('class').addClass('dropdown-menu'),
+          $moreSubItems = $moreSub.children('li'),
+          $moreItem = $('<li role="listitem"><a href="#">View More</a></li>').append($moreSub).appendTo(this.$root),
+          self = this,
+          vieportW,
+          hiddenItems = [],
+          hiddenMoreItems = [];
+      }
+  
+      this.old_init(refresh);
+  
+      if (!refresh && !this.$root.hasClass('sm-vertical')) {
+        function handleResize(force) {
+          var curWidth = $(window).width();
+          if (vieportW !== curWidth || force) {
+            // hide More item
+            $moreItem.detach();
+  
+            // show all main menu items
+            $.each(hiddenItems, function() {
+              $(this).appendTo(self.$root);
+            });
+            hiddenItems = [];
+  
+            // show all More sub items
+            $.each(hiddenMoreItems, function() {
+              $(this).prependTo($moreSub);
+            });
+            hiddenMoreItems = [];
+  
+            // if in desktop view and the last item is wrapped
+            if (!self.$root.hasClass('sm-vertical') && (/^(left|right)$/.test(self.$firstLink.parent().css('float')) || self.$firstLink.parent().css('display') == 'table-cell') && $originalItems.eq(-1)[0].offsetTop != $originalItems.eq(0)[0].offsetTop) {
+              // show More item
+              $moreItem.appendTo(self.$root);
+  
+              // while the More item is wrapped
+              while ($moreItem[0].offsetTop != $originalItems.eq(0)[0].offsetTop) {
+                hiddenItems.unshift($moreItem.prev('li').detach());
+              };
+  
+              // hide proper More sub items
+              $moreSubItems.slice(0, $moreSubItems.length - hiddenItems.length).each(function() {
+                hiddenMoreItems.unshift($(this).detach());
+              });
+            }
+  
+            // save new viewport width
+            vieportW = curWidth;
+          }
+        }
+        handleResize();
+  
+        $(window).bind({
+          'load.smartmenus': function() {
+            handleResize(true);
+          },
+          'resize.smartmenus': handleResize
+        });
+      }
+    };
+  
+    // Fix isCollapsible method
+    $.SmartMenus.prototype.isCollapsible = function() {
+      return this.$root.find('ul').eq(0).css('position') == 'static';
+    };
+
     // Init Nav Menu
     $(document).ready(function () {
-        $('.tx-initialize-menu').each(function (index, element) {
+        $('.initialize-menu').each(function (index, element) {
             $(element).smartmenus();
         });
     });
 
-
-    // // Main Banner Slider
     // $(document).ready(function () {
-    //     $('.edt-banner-sliders').slick({
-    //         slidesToShow: 1,
-    //         slidesToScroll: 1,
-    //         dots: true,
-    //         arrows: true,
-    //         fade: true,
-    //         speed: 800,
-    //         autoplay: true,
-    //         autoplaySpeed: 8000,
-    //         infinite: true,
-    //         cssEase: 'linear',
-    //         // adaptiveHeight: true,
-    //         appendArrows: $('.edt-banner-sliders-buttons'),
-    //         prevArrow: $('.prev-banner'),
-    //         nextArrow: $('.next-banner'),
+    //     $('#ltv-sidebar-menu').each(function (index, element) {
+    //         $(element).smartmenus();
     //     });
     // });
-
-    // $('.edt-testimonial-carousels').each(function(index, element) {
-    //     $(element).slick({
-    //         slidesToShow: 3,
-    //         slidesToScroll: 1,
-    //         arrows: true,
-    //         fade: false,
-    //         dots: true,
-    //         autoplay: false,
-    //         autoplaySpeed: 5000,
-    //         infinite: true,
-    //         cssEase: 'linear',
-    //         adaptiveHeight: true,
-    //         responsive: [
-    //             {
-    //                 breakpoint: 1000,
-    //                 settings: {
-    //                     slidesToShow: 2,
-    //                     slidesToScroll: 1,
-    //                     infinite: true,
-    //                     dots: true
-    //                 }
-    //             },
-    //             {
-    //                 breakpoint: 800,
-    //                 settings: {
-    //                     slidesToShow: 1,
-    //                     slidesToScroll: 1,
-    //                     infinite: true,
-    //                     dots: true
-    //                 }
-    //             },
-    //             {
-    //                 breakpoint: 600,
-    //                 settings: {
-    //                     slidesToShow: 1,
-    //                     slidesToScroll: 1,
-    //                     infinite: true,
-    //                     dots: false
-    //                 }
-    //             }
-    //         ]
-    //     });
-    // });
-
-    // $('.edt-hero-carousels-sm').each(function(index, element) {
-    //     $(element).slick({
-    //         slidesToShow: 1,
-    //         slidesToScroll: 1,
-    //         arrows: true,
-    //         fade: false,
-    //         dots: false,
-    //         autoplay: false,
-    //         autoplaySpeed: 5000,
-    //         infinite: true,
-    //         cssEase: 'linear',
-    //         adaptiveHeight: true,
-    //         appendArrows: $('.edt-hero-carousel-buttons'),
-    //         prevArrow: $('.prev'),
-    //         nextArrow: $('.next'),
-    //         responsive: [
-    //             {
-    //                 breakpoint: 1000,
-    //                 settings: {
-    //                     slidesToShow: 2,
-    //                     slidesToScroll: 1,
-    //                     infinite: true,
-    //                     dots: true
-    //                 }
-    //             },
-    //             {
-    //                 breakpoint: 800,
-    //                 settings: {
-    //                     slidesToShow: 1,
-    //                     slidesToScroll: 1,
-    //                     infinite: true,
-    //                     dots: true
-    //                 }
-    //             },
-    //             {
-    //                 breakpoint: 600,
-    //                 settings: {
-    //                     slidesToShow: 1,
-    //                     slidesToScroll: 1,
-    //                     infinite: true,
-    //                     dots: false
-    //                 }
-    //             }
-    //         ]
-    //     });
-    // });
-
-    // // Carousel Default sm
-    // $('.edt-carousel-default').each(function(index, element) {
-    //     $(element).slick({
-    //         slidesToShow: 3,
-    //         slidesToScroll: 1,
-    //         arrows: true,
-    //         fade: false,
-    //         dots: true,
-    //         autoplay: false,
-    //         autoplaySpeed: 5000,
-    //         infinite: true,
-    //         cssEase: 'linear',
-    //         adaptiveHeight: true,
-    //         // appendDots: $('.edt-carousel-dots'),
-    //         appendArrows: $('.edt-carousel-buttons'),
-    //         prevArrow: $('.prev'),
-    //         nextArrow: $('.next'),
-    //         responsive: [
-    //             {
-    //                 breakpoint: 1000,
-    //                 settings: {
-    //                     slidesToShow: 2,
-    //                     slidesToScroll: 1,
-    //                     infinite: true,
-    //                     dots: true
-    //                 }
-    //             },
-    //             {
-    //                 breakpoint: 800,
-    //                 settings: {
-    //                     slidesToShow: 1,
-    //                     slidesToScroll: 1,
-    //                     infinite: true,
-    //                     dots: true
-    //                 }
-    //             },
-    //             {
-    //                 breakpoint: 600,
-    //                 settings: {
-    //                     slidesToShow: 1,
-    //                     slidesToScroll: 1,
-    //                     infinite: true,
-    //                     dots: false
-    //                 }
-    //             }
-    //         ]
-    //     });
-    // });
-
-})(jQuery);
+  
+  })(jQuery);
+  
 window.addEventListener('DOMContentLoaded', (event) => {
     /**
      * ==========================
@@ -179,16 +166,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
     function switchTheme() {
         try {
             let darkMode = localStorage.getItem("darkMode");
-            const switchModeToggles = document.querySelectorAll(".tx-theme-switch-btn");
+            const switchModeToggles = document.querySelectorAll(".ltv-theme-switch-btn");
             const mainDoc = document.getElementsByTagName("html")[0];
-            const iconClass =   document.querySelector(".tx-theme-switch-btn .tx-icon");
+            const iconClass =   document.querySelector(".ltv-theme-switch-btn i");
+            const whiteLogos = document.querySelectorAll(".logo-white");
+            const darkLogos = document.querySelectorAll(".logo-dark");
 
             const enableDarkMode = () => {
                 // Add class to the html
-                mainDoc.classList.add("dark");
+                mainDoc.classList.add("dark-theme");
 
                 // Add class to icon
-                iconClass.classList.add("dark-icon");
+                iconClass.setAttribute("class", "fa-regular fa-sun");
+
+                // Change Logo
+                darkLogos.forEach((darkLogo) => {
+                    darkLogo.style.display = "none";
+                });
+
+                whiteLogos.forEach((whiteLogo) => {
+                    whiteLogo.style.display = "block";
+                });
 
                 // update in the local storage
                 localStorage.setItem("darkMode", "enabled");
@@ -196,10 +194,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             const disableDarkMode = () => {
                 // Add class to the html
-                mainDoc.classList.remove("dark");
+                mainDoc.classList.remove("dark-theme");
 
                 // Add class to icon
-                iconClass.classList.remove("dark-icon");
+                iconClass.setAttribute("class", "fa-solid fa-sun");
+
+                // Change Logo
+                darkLogos.forEach((darkLogo) => {
+                    darkLogo.style.display = "block";
+                });
+
+                whiteLogos.forEach((whiteLogo) => {
+                    whiteLogo.style.display = "none";
+                });
 
                 // update in the local storage
                 localStorage.setItem("darkMode", null);
@@ -252,18 +259,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
             window.onscroll = function () { stickyFunction() };
 
             // Get the navbar
-            const header = document.querySelector(".tx-main-header");
+            const header = document.querySelector(".ltv-site-header");
 
             // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
             function stickyFunction() {
 
-                if (window.scrollY > 100) {
+                if (window.scrollY > 0) {
 
-                    header.classList.add("tx-fixed-top");
+                    header.classList.add("ltv-fixed-top");
 
                 } else {
 
-                    header.classList.remove("tx-fixed-top");
+                    header.classList.remove("ltv-fixed-top");
 
                 }
             }
@@ -330,7 +337,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             const fullSearch = document.querySelector("#fullsearch-container");
 
             // Menu Toggle
-            const collapseBtns = document.querySelectorAll(".edt-toggle-fullsearch");
+            const collapseBtns = document.querySelectorAll(".ltv-toggle-fullsearch");
 
             collapseBtns.forEach((collapseBtn) => {
                 collapseBtn.addEventListener('click', openSearch);
@@ -434,7 +441,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
      * NAVBAR COLLAPSE
      * ========================
      */
-    // Index 1
     function navbarCollapse() {
 
         try {
@@ -444,10 +450,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
             // Find the menu and its overlay
             const navbarMenu = document.querySelector("#sidebarMenu");
             const overlay = document.querySelector(".body-overlay");
-            const closeBtn = document.querySelector("#tx-close-menu-btn");
+            const closeBtn = document.querySelector("#ltv-close-menu-btn");
 
             // Menu Toggle
-            const collapseBtns = document.querySelectorAll(".tx-sidebar-toggle");
+            const collapseBtns = document.querySelectorAll(".ltv-sidebar-toggle");
 
             collapseBtns.forEach((collapseBtn) => {
                 collapseBtn.addEventListener('click', openSidebar);
@@ -537,110 +543,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
     navbarCollapse();
 
-    // Index 2
-    function collapseSidebar() {
-        try {
-            // Will hold previously focused element
-            var focusedElementBefore;
-
-            // Find the menu and its overlay
-            const navbarMenu = document.querySelector("#tx-sidebar");
-            const mainContent = document.querySelector("#tx-main");
-            const topHeader = document.querySelector("#tx-top-header");
-            const footer = document.querySelector("#tx-footer");
-
-            // Menu Toggle
-            const collapseBtns = document.querySelectorAll(".tx-sidebar-toggle");
-
-            collapseBtns.forEach((collapseBtn) => {
-                collapseBtn.addEventListener('click', openSidebar);
-            });
-
-            function openSidebar() {
-
-                collapseBtns.forEach((collapseBtn) => {
-                    collapseBtn.classList.toggle('open');
-                });
-
-                // Show Menu and Overlay
-                navbarMenu.classList.toggle("open");
-                mainContent.classList.toggle("open");
-                topHeader.classList.toggle("open");
-                footer.classList.toggle("open");
-
-            }
-
-        } catch (e) {
-            console.log("collapseSidebar(): " + e);
-        }
-    }
-    // collapseSidebar();
-
     /**
      * ====================
      * ADD ARIA DETAILS
      * ====================
      */
-    function addDataARIA() {
-        try {
-            var allTables = document.querySelectorAll('table');
-            for (var i = 0; i < allTables.length; i++) {
-                allTables[i].setAttribute('role', 'table');
-            }
-            var allCaptions = document.querySelectorAll('caption');
-            for (var i = 0; i < allCaptions.length; i++) {
-                allCaptions[i].setAttribute('role', 'caption');
-            }
-            var allRowGroups = document.querySelectorAll('thead, tbody, tfoot');
-            for (var i = 0; i < allRowGroups.length; i++) {
-                allRowGroups[i].setAttribute('role', 'rowgroup');
-            }
-            var allRows = document.querySelectorAll('tr');
-            for (var i = 0; i < allRows.length; i++) {
-                allRows[i].setAttribute('role', 'row');
-            }
-            var allCells = document.querySelectorAll('td');
-            for (var i = 0; i < allCells.length; i++) {
-                allCells[i].setAttribute('role', 'cell');
-            }
-            var allHeaders = document.querySelectorAll('th');
-            for (var i = 0; i < allHeaders.length; i++) {
-                allHeaders[i].setAttribute('role', 'columnheader');
-            }
-            // this accounts for scoped row headers
-            var allRowHeaders = document.querySelectorAll('th[scope=row]');
-            for (var i = 0; i < allRowHeaders.length; i++) {
-                allRowHeaders[i].setAttribute('role', 'rowheader');
-            }
-
-            // List Aria
-            var allLists = document.querySelectorAll("ol, ul");
-            for (var i = 0; i < allLists.length; i++) {
-                allLists[i].setAttribute("role", "list");
-            }
-            var allListItems = document.querySelectorAll("li");
-            for (var i = 0; i < allListItems.length; i++) {
-                allListItems[i].setAttribute("role", "listitem");
-            }
-            var allDefLists = document.querySelectorAll("dl");
-            for (var i = 0; i < allDefLists.length; i++) {
-                allDefLists[i].setAttribute("role", "associationlist list");
-            }
-            var allDefTerms = document.querySelectorAll("dt");
-            for (var i = 0; i < allDefTerms.length; i++) {
-                allDefTerms[i].setAttribute("role", "associationlistitemkey listitem");
-            }
-            var allDefItems = document.querySelectorAll("dd");
-            for (var i = 0; i < allDefItems.length; i++) {
-                allDefItems[i].setAttribute("role", "associationlistitemvalue listitem");
-            }
-
-        } catch (e) {
-            console.log("addDataARIA(): " + e);
-        }
-    }
-    addDataARIA();
-
     function addAriaAttributes() {
 
         function setRoleAttribute(selector, role) {
@@ -680,9 +587,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.error("addAriaAttributes():", e);
         }
     }
-    // addAriaAttributes();
+    addAriaAttributes();
     
-
     /**
      * ==================================
      * INJECT FORM_CONTROL, FORM SELECT
@@ -748,7 +654,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             console.log("injectBsFormClasses(): " + e);
         }
     }
-    injectBsFormClasses();
+    // injectBsFormClasses();
 
     /**
      * =====================================
@@ -792,5 +698,48 @@ window.addEventListener('DOMContentLoaded', (event) => {
             behavior: 'smooth'
         });
     }
+
+    /**
+     * =======================
+     * NAV TABS
+     * =======================
+     */
+    function initNavTabs() {
+
+        try {
+
+            document.querySelectorAll('.ltv-tabs').forEach(tabsContainer => {
+
+                const tabButtons = tabsContainer.querySelectorAll('.tab-button');
+                const tabContents = tabsContainer.querySelectorAll('.tab');
+            
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const tabData = button.getAttribute('data-tab');
+                        
+                        // Remove active class from all tab buttons
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        
+                        // Add active class to clicked button
+                        button.classList.add('active');
+                        
+                        // Hide all tab content
+                        tabContents.forEach(tab => tab.classList.remove('active'));
+                        
+                        // Show the selected tab content
+                        tabsContainer.querySelector(`.tab[data-tab-content="${tabData}"]`).classList.add('active');
+                    });
+                });
+            
+                // Trigger the first tab to be active on page load
+                tabButtons[0].click();
+            });            
+            
+        } catch (e) {
+            console.log("initNavTabs(): " + e );
+        }
+
+    }
+    initNavTabs();
 
 });

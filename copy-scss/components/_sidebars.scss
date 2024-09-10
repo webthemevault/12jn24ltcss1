@@ -1,0 +1,184 @@
+@use "../utilities" as *;
+
+@include breakpoint-up(md) {
+    .tx-sidebar {
+        display: none;
+    }
+}
+
+.tx-sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 350px;
+    max-width: 70%;
+    height: 100%;
+    background: var(--#{$prefix}dark);
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 0 0.25rem rgb(0 0 0 / 18%);
+    overflow-y: auto;
+    border: none;
+    @include setTransition(0.5s);
+    z-index: 9999;
+    color: var(--#{$prefix}white);
+    padding: rem(20);
+
+    &.show {
+        left: 0;
+    }
+
+    .inner {
+        display: block;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .sidebar-top {
+        @include flex-center-between();
+        margin-bottom: rem(40);
+        padding: 5px;
+    }
+
+    .custom-logo-link,
+    .site-logo,
+    .logo {
+        height: 30px;
+        display: inline-block;
+
+        img {
+            height: 100%;
+        }
+
+        a {
+            &:focus {
+                outline: 2px solid $white;
+            }
+        }
+    }
+
+    .tx-sidebar-menu {
+        border: none;
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+
+        a {
+            color: var(--#{$prefix}white);
+            letter-spacing: normal;
+            padding-left: 0.5rem;
+            @include setTransition();
+
+            &:hover,
+            &:focus,
+            &.active,
+            &.highlighted {
+                text-decoration: underline;
+                border: none;
+                border-radius: 0;
+                outline: none;
+                padding-left: 0.5rem !important;
+                @include setTransition();
+            }
+        }
+
+        >li {
+            border: none;
+
+            >ul {
+                margin-top: 1px;
+
+                &::before,
+                &::after {
+                    display: none;
+                }
+            }
+
+            >a {
+                font-size: var(--#{$prefix}font-body);
+                font-weight: 500;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                padding-left: 0 !important;
+                text-transform: uppercase;
+                border: none !important;
+
+                &:hover,
+                &:focus,
+                &.highlighted {
+                    font-size: var(--#{$prefix}font-body);
+                    font-weight: 500;
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                    padding-left: 0 !important;
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                    border: none !important;
+                    border-radius: 0;
+                    outline: none;
+                    @include setTransition();
+                }
+
+                &.active {
+                    font-size: var(--#{$prefix}font-body);
+                    font-weight: bold;
+                    padding-top: 1rem;
+                    padding-bottom: 1rem;
+                    padding-left: 0 !important;
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                    border: none !important;
+                    border-radius: 0;
+                    outline: none;
+                    @include setTransition();
+                }
+            }
+        }
+
+    }
+
+    .close-menu-btn {
+        text-decoration: none;
+        height: rem(35);
+        width: rem(35);
+        @include flex-center-center();
+        background-color: transparent;
+        border: 1px solid $white;
+        color: $white;
+        font-size: rem(22);
+        margin: auto;
+        padding: 0;
+
+        &:focus {
+            border: 2px solid $white;
+        }
+    }
+
+    .menu-search-form {
+        display: block;
+        margin: rem(30) 0;
+
+        .form-control,
+        .form-button {
+            background: unset;
+            color: unset;
+        }
+
+        .form-control {
+            padding-right: 45px;
+        }
+    }
+
+    .sidebar-btn-container {
+        margin-top: rem(20);
+        padding: rem(15);
+    }
+
+    .tx-icon,
+    .tx-icon.dark-icon {
+        fill: var(--#{$prefix}white);
+    }
+
+}

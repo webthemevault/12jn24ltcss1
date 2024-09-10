@@ -1,0 +1,16 @@
+@use "../utilities" as *;
+
+h1 {font-size: var(--#{$prefix}font-h1);}
+h2 {font-size: var(--#{$prefix}font-h2);}
+h3 {font-size: var(--#{$prefix}font-h3);}
+h4 {font-size: var(--#{$prefix}font-h4);}
+h5 {font-size: var(--#{$prefix}font-h5);}
+h6 {font-size: var(--#{$prefix}font-h6);}
+
+p, span {
+    font-size: var(--#{$prefix}font-body);
+    line-height: 1.5;
+}
+
+.body-xsmall {font-size: var(--#{$prefix}font-xs);}
+.body-small {font-size: var(--#{$prefix}font-sm);}

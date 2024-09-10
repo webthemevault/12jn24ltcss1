@@ -1,0 +1,184 @@
+@use "../utilities" as *;
+
+.tx-main-header {
+    background: transparent;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--#{$prefix}line);
+}
+
+.tx-main-navbar { // Just for Bootstrap
+    background-color: var(--#{$prefix}background);
+    color: var(--#{$prefix}text);
+    margin-top: 0;
+    padding: 0.5rem 0;
+
+    @include breakpoint-up(md) {
+        padding: 0;
+    }
+}
+
+.tx-main-navbar-wrapper { // No bootstrap
+    background-color: var(--#{$prefix}background);
+    color: var(--#{$prefix}text);
+    margin-top: 0;
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    @include breakpoint-up(md) {
+        padding: 0;
+    }
+}
+
+.tx-menu-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tx-main-menu {
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+    width: 100%;
+    display: none;
+
+    @include breakpoint-up(md) {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    a {
+        letter-spacing: normal;
+        @include setTransition();
+
+        &:hover,
+        &:focus,
+        &.active,
+        &.highlighted {
+            text-decoration: none;
+            background-color: transparent;
+            @include setTransition();
+        }
+    }
+
+    ul {
+        border: none;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-radius: 0;
+
+        a {
+            font-size: var(--#{$prefix}font-sm);
+            font-weight: normal;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            text-decoration: none;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &.highlighted {
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+                font-size: var(--#{$prefix}font-sm);
+                text-decoration: none;
+                background-color: transparent;
+                color: var(--#{$prefix}gray-600);
+                @include setTransition();
+            }
+
+            &.has-submenu {
+                .sub-arrow {
+                    display: none;
+                }
+
+                &::before {
+                    position: absolute;
+                    content: "\f054";
+                    font-family: "FontAwesome";
+                    top: 50%;
+                    left: auto;
+                    right: 8px;
+                    margin-left: 2px;
+                    font-size: 9px;
+                    font-weight: bold;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+
+    >li {
+        border: none;
+
+        >a {
+            font-size: var(--#{$prefix}font-sm);
+            font-weight: 500;
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            letter-spacing: normal;
+            text-shadow: none;
+            text-transform: uppercase;
+            color: var(--#{$prefix}text);
+            border: none;
+
+            &:hover,
+            &:focus,
+            &.active,
+            &.highlighted {
+                font-size: var(--#{$prefix}font-sm);
+                font-weight: 500;
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+                letter-spacing: normal;
+                text-shadow: none;
+                text-transform: uppercase;
+                color: var(--#{$prefix}text);
+            }
+
+            &.active {
+                font-size: var(--#{$prefix}font-sm);
+                font-weight: bold;
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+                letter-spacing: normal;
+                text-shadow: none;
+                text-transform: uppercase;
+                color: var(--#{$prefix}text);
+            }
+
+            &.has-submenu {
+                .sub-arrow {
+                    display: none;
+                }
+
+                &::before {
+                    position: absolute;
+                    content: "\f078";
+                    font-family: "FontAwesome";
+                    top: 50%;
+                    left: auto;
+                    right: 10px;
+                    margin-top: -2px;
+                    font-size: 9px;
+                    font-weight: bold;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+
+        ul {
+            min-width: auto !important;
+            border-top: 1px solid var(--#{$prefix}line);
+        }
+    }
+}
+

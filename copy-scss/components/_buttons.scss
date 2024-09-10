@@ -1,0 +1,283 @@
+@use "../utilities" as *;
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    font-size:var(--#{$prefix}font-sm);
+    font-weight: normal;
+    border-radius: var(--#{$prefix}radius-null);
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    
+    &.btn-primary {
+        background-color: var(--#{$prefix}theme);
+        border-color: transparent;
+    }
+}
+
+%buttons {
+    align-items: center;
+    display: inline-flex;
+    font-weight: 300;
+    letter-spacing: 1.8px;
+    padding: 0.75em 2.2em;
+    justify-content: center;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0;
+    white-space: nowrap;
+    @include setTransition();
+    font-size: var(--#{$prefix}font-sm);
+    cursor: pointer;
+
+    &:focus {
+        outline-color: var(--#{$prefix}text);
+    }
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    @include breakpoint-up(md) {
+        font-size:var(--#{$prefix}font-sm);
+
+        &.button-lg {
+            font-size:var(--#{$prefix}font-body);
+        }
+    
+        &.button-md {
+            font-size:var(--#{$prefix}font-sm);
+        }
+    
+        &.button-sm {
+            font-size:var(--#{$prefix}font-xs);
+        }
+    }
+}
+
+.tx-button,
+button.tx-button,
+input[type="submit"].tx-button,
+form-control.tx-button,
+input[type="button"].tx-button,
+.all-content-btn a {
+    @extend %buttons;
+    background: var(--#{$prefix}theme);
+    color: var(--#{$prefix}white);
+
+    &.button-inverse {
+        background: var(--#{$prefix}white);
+        border-color: var(--#{$prefix}white);
+        color: var(--#{$prefix}theme);
+    }
+}
+
+.tx-widget-wrapper {
+    
+    .btn-container {
+        a {
+            align-items: center;
+            display: inline-flex;
+            font-weight: 300;
+            letter-spacing: 1.8px;
+            padding: 0.75em 2.2em;
+            justify-content: center;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 0;
+            white-space: nowrap;
+            @include setTransition();
+            font-size: var(--#{$prefix}font-sm);
+            cursor: pointer;
+            background: var(--#{$prefix}theme);
+            color: var(--#{$prefix}white);
+
+            &.button-inverse {
+                background: var(--#{$prefix}white);
+                border-color: var(--#{$prefix}white);
+                color: var(--#{$prefix}theme);
+            }
+        
+            &:focus {
+                outline-color: var(--#{$prefix}text);
+            }
+        
+            &:hover {
+                opacity: 0.9;
+            } 
+        }
+    }
+}
+
+.hamburger {
+    width: 32px;
+    height: 38px;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    padding-top: 3px;
+
+    span {
+        display: block;
+        background: currentColor;
+    }
+
+    #hamburger {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+
+        span {
+            width: 100%;
+            height: 2px;
+            position: relative;
+            top: 0;
+            left: 0;
+            margin: 6px 0;
+            transition: width ease 0.25s;
+
+            &:nth-child(1) {
+                transition-delay: .5s;
+                width: 100%;
+            }
+
+            &:nth-child(2) {
+                transition-delay: .625s;
+                width: 70%;
+            }
+
+            &:nth-child(3) {
+                transition-delay: .75s;
+                width: 100%;
+                left: 0;
+            }
+        }
+    }
+
+    #cross {
+        position: absolute;
+        height: 34px;
+        width: 34px;
+        transform: rotate(45deg);
+        left: -2px;
+        top: 2px;
+
+        span {
+            &:nth-child(1) {
+                height: 0%;
+                width: 2px;
+                position: absolute;
+                top: 0;
+                right: 16px;
+                transition-delay: 0s;
+                transition: height ease 0.25s;
+            }
+
+            &:nth-child(2) {
+                width: 0%;
+                height: 2px;
+                position: absolute;
+                left: 0;
+                top: 16px;
+                transition-delay: .25s;
+                transition: width ease 0.25s;
+            }
+        }
+    }
+
+    &.open {
+        #hamburger {
+            span {
+                width: 0%;
+    
+                &:nth-child(1) {
+                    transition-delay: 0s;
+                }
+    
+                &:nth-child(2) {
+                    transition-delay: .125s;
+                }
+    
+                &:nth-child(3) {
+                    transition-delay: .25s;
+                }
+            }
+        }
+    
+        #cross {
+            span {
+                &:nth-child(1) {
+                    height: 100%;
+                    transition-delay: .625s;
+                }
+            }
+    
+            span {
+                &:nth-child(2) {
+                    width: 100%;
+                    transition-delay: .375s;
+                }
+            }
+        }
+    }
+
+    @include breakpoint-up(md) {
+        display: none;
+    }
+}
+
+.scrollToTop {
+    position: fixed;
+    bottom: rem(45);
+    right: rem(10);
+    display: none;
+    height: rem(35);
+    width: rem(35);
+    text-align: center;
+    border: 2px solid var(--#{$prefix}theme);
+    border-radius: 3px;
+    background-color: var(--#{$prefix}theme);
+    color: var(--#{$prefix}white);
+    @include setTransition();
+    z-index: 9999;
+
+    @include breakpoint-up(sm) {
+        height: rem(45);
+        width: rem(45);
+        right: rem(20);
+    }
+
+    @include breakpoint-up(md) {
+        height: rem(50);
+        width: rem(50);
+    }
+
+    i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+        background-color: var(--#{$prefix}background);
+        border-color: var(--#{$prefix}text);
+        color: var(--#{$prefix}text);
+    }
+
+    &:focus {
+        border: 2px solid var(--#{$prefix}background);
+        outline: none;
+    }
+
+}
+
+.tx-toggle-button {
+    margin-left: auto;
+}
+

@@ -1,0 +1,42 @@
+@use "../utilities" as *;
+
+.tx-search-page {
+
+    .tx-page-content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+    }
+
+    .tx-search-item {
+        padding: 1.5rem;
+        border: 1px solid var(--#{$prefix}line);
+        border-radius: 0.5rem;
+    }
+
+    .tx-post-title {
+        font-size: var(--#{$prefix}font-h5);
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: var(--#{$prefix}text);
+        @include setTransition();
+
+        a {
+            color: var(--#{$prefix}text);
+            @include setTransition();
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .excerpt {
+        font-size: var(--#{$prefix}font-body);
+
+        @include breakpoint-up(md) {
+            font-size: var(--#{$prefix}font-sm);
+        }
+    }
+
+}

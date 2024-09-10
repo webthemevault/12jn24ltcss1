@@ -1,0 +1,132 @@
+@use "breakpoints"as *;
+@use "variables"as *;
+
+// Media Queries
+@mixin breakpoint-up($size) {
+    @media (min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}
+
+@mixin breakpoint-down($size) {
+    @media (max-width: map-get($breakpoints-down, $size)) {
+        @content;
+    }
+}
+
+// FlexBox
+@mixin flex-center-center($dir: row, $gap: 0) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-start-center($dir: row, $gap: 0) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-start-between($dir: row, $gap: 0) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-end-center($dir: row, $gap: 0) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-start-start($dir: row, $gap: 0) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-end-end($dir: row, $gap: 0) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-start-between($dir: row, $gap: 0) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-start-end($dir: row, $gap: 0) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-end-between($dir: row, $gap: 0) {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-center-start($dir: row, $gap: 0) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-center-end($dir: row, $gap: 0) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-center-even($dir: row, $gap: 0) {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+@mixin flex-center-between($dir: row, $gap: 0) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: $dir;
+    gap: $gap;
+}
+
+// Transition
+@mixin setTransition($time: 0.3s, $el: all, $ease: ease-in-out) {
+    transition: $el $time $ease;
+}
+
+// Image Background
+@mixin img-background($position: center center, $size: cover, $repeat: no-repeat) {
+    background-size: $size;
+    background-repeat: $repeat;
+    background-position: $position;
+}

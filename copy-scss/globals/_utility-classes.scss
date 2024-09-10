@@ -1,0 +1,290 @@
+@use '../utilities'as *;
+
+// Height
+@for $i from 0 through 800 {
+
+    .min-h-#{$i} {
+        @if $i==0 {
+            min-height: #{$i};
+        }
+
+        @else {
+            min-height: #{$i}px;
+        }
+
+    }
+
+    .max-h-#{$i} {
+        @if $i==0 {
+            max-height: #{$i};
+        }
+
+        @else {
+            max-height: #{$i}px;
+        }
+
+    }
+
+    .h-#{$i} {
+        @if $i==0 {
+            height: #{$i};
+        }
+
+        @else {
+            height: #{$i}px;
+        }
+
+    }
+}
+
+// Width
+@for $i from 0 through 800 {
+
+    .min-w-#{$i} {
+        @if $i==0 {
+            min-width: #{$i};
+        }
+
+        @else {
+            min-width: #{$i}px;
+        }
+
+    }
+
+    .max-w-#{$i} {
+        @if $i==0 {
+            max-width: #{$i};
+        }
+
+        @else {
+            max-width: #{$i}px;
+        }
+
+    }
+
+    .w-#{$i} {
+        @if $i==0 {
+            width: #{$i};
+        }
+
+        @else {
+            width: #{$i}px;
+        }
+
+    }
+}
+
+// Border radius in px
+@for $i from 0 through 100 {
+    .radius-#{$i} {
+        @if $i==0 {
+            border-radius: #{$i} !important;
+        }
+
+        @else {
+            border-radius: #{$i}px !important;
+        }
+
+    }
+}
+
+// Border Radius in %
+@for $i from 0 through 100 {
+    $percent: calc($i * 1%);
+
+    .radius-#{$i}-pc {
+        border-radius: $percent !important;
+    }
+}
+
+// Font Size
+@for $i from 8 through 80 {
+
+    .font-#{$i} {
+        @if $i==0 {
+            font-size: #{$i} !important;
+        }
+
+        @else {
+            font-size: #{$i}px !important;
+        }
+    }
+}
+
+// Font Weight
+@for $i from 1 through 9 {
+
+    .bold-#{$i} {
+        font-weight: calc($i * 100) !important;
+    }
+}
+
+// Padding
+@for $i from 0 through 250 {
+    .padding-#{$i} {
+        @if $i==0 {
+            padding: #{$i};
+        }
+
+        @else {
+            padding: #{$i}px;
+        }
+
+    }
+
+    .padding-y-#{$i} {
+        @if $i==0 {
+            padding-top: #{$i};
+            padding-bottom: #{$i};
+        }
+
+        @else {
+            padding-top: #{$i}px;
+            padding-bottom: #{$i}px;
+        }
+
+    }
+
+    .padding-x-#{$i} {
+        @if $i==0 {
+            padding-left: #{$i};
+            padding-right: #{$i};
+        }
+
+        @else {
+            padding-left: #{$i}px;
+            padding-right: #{$i}px;
+        }
+
+    }
+
+    .padding-top-#{$i} {
+        @if $i==0 {
+            padding-top: #{$i};
+        }
+
+        @else {
+            padding-top: #{$i}px;
+        }
+
+    }
+
+    .padding-bottom-#{$i} {
+        @if $i==0 {
+            padding-bottom: #{$i};
+        }
+
+        @else {
+            padding-bottom: #{$i}px;
+        }
+
+    }
+
+    .padding-left-#{$i} {
+        @if $i==0 {
+            padding-left: #{$i};
+        }
+
+        @else {
+            padding-left: #{$i}px;
+        }
+
+    }
+
+    .padding-right-#{$i} {
+        @if $i==0 {
+            padding-right: #{$i};
+        }
+
+        @else {
+            padding-right: #{$i}px;
+        }
+
+    }
+}
+
+// Margin
+@for $i from 0 through 250 {
+    
+    .margin-#{$i} {
+        @if $i==0 {
+            margin: #{$i};
+        }
+
+        @else {
+            margin: #{$i}px;
+        }
+
+    }
+
+    .margin-y-#{$i} {
+        @if $i==0 {
+            margin-top: #{$i};
+            margin-bottom: #{$i};
+        }
+
+        @else {
+            margin-top: #{$i}px;
+            margin-bottom: #{$i}px;
+        }
+
+    }
+
+    .margin-x-#{$i} {
+        @if $i==0 {
+            margin-left: #{$i};
+            margin-right: #{$i};
+        }
+
+        @else {
+            margin-left: #{$i}px;
+            margin-right: #{$i}px;
+        }
+
+    }
+
+    .margin-top-#{$i} {
+        @if $i==0 {
+            margin-top: #{$i};
+        }
+
+        @else {
+            margin-top: #{$i}px;
+        }
+
+    }
+
+    .margin-bottom-#{$i} {
+        @if $i==0 {
+            margin-bottom: #{$i};
+        }
+
+        @else {
+            margin-bottom: #{$i}px;
+        }
+
+    }
+
+    .margin-left-#{$i} {
+        @if $i==0 {
+            margin-left: #{$i};
+        }
+
+        @else {
+            margin-left: #{$i}px;
+        }
+
+    }
+
+    .margin-right-#{$i} {
+        @if $i==0 {
+            margin-right: #{$i};
+        }
+
+        @else {
+            margin-right: #{$i}px;
+        }
+
+    }
+}
+

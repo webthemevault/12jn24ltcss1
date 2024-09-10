@@ -1,0 +1,19 @@
+@use "../utilities" as *;
+.tx-site-branding {
+    display: block;
+}
+
+.custom-logo-link {
+    display: block;
+
+    img {
+        height: 2.5rem;
+        width: auto;
+    }
+
+    @include breakpoint-up(md) {
+        img {
+            height: 2.5rem;
+        }
+    }
+}

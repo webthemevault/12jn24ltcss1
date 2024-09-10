@@ -1,0 +1,65 @@
+@use "../../utilities" as *;
+
+.tx-card-icon {
+    display: flex;
+    align-items: initial;
+    flex-direction: column;
+    border: 1px solid var(--#{$prefix}line);
+    border-radius: 0.5rem;
+    background: var(--#{$prefix}background);
+    color: var(--#{$prefix}text);
+    padding: 1.25rem;
+    font-size: var(--#{$prefix}font-sm);
+    box-shadow: 0 0.25rem 0.85rem rgba(46, 68, 161, 0.12);
+
+    .tx-icon {
+        height: 2.8rem;
+        width: 2.8rem;
+        background-color: var(--#{$prefix}theme);
+        display: inline-block;
+        @include flex-center-center();
+        border-radius: 0.5rem;
+
+        svg {
+            height: 1.5rem;
+            width: 1.5rem;
+            fill: var(--#{$prefix}white);
+            @include flex-center-center();
+        }
+
+        i {
+            font-size: var(--#{$prefix}font-body);
+            color: var(--#{$prefix}white);
+        }
+    }
+
+    .tx-content {
+        @include flex-start-center(column);
+        margin-top: 1rem;
+
+        .tx-title {
+            font-size: var(--#{$prefix}font-body);
+            font-weight: bold;
+            padding: 0;
+            margin: 0;
+            line-height: 1;
+        }
+
+        .tx-description {
+            font-size: var(--#{$prefix}font-sm);
+            padding: 0;
+            margin: 0;
+            margin-top: 0.5rem;
+        }
+
+        @include breakpoint-up(md) {
+            .tx-title {
+                font-size: var(--#{$prefix}font-sm);
+            }
+    
+            .tx-description {
+                font-size: var(--#{$prefix}font-xs);
+            }
+        }
+    }
+}

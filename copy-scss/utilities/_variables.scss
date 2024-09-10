@@ -1,0 +1,172 @@
+@use "../utilities/functions" as *;
+
+$prefix: tx-;
+
+$theme: #0A1D30;
+$background: #ffffff;
+$line: #e0e2e4;
+$text: #000000;
+$darktheme: #0b0b0b;
+$darkblue: #152230;
+$gray: #adb5bd;
+$grayscale: #dddfe0;
+$white: #fff;
+$black: #000;
+$dark: #222;
+$red: #e74c3c;
+$blue: #3498db;
+$green: #2ecc71;
+
+$facebook: #3b5998;
+$twitter: #55acee;
+$linkedin: #0077b5;
+$whatsapp: #43d854;
+$youtube: #cd201f;
+$instagram: #3f729b;
+$pinterest: #bd081c;
+$github: #00405d;
+$reddit: #ff4500;
+$telegram: #27a7e7;
+$rss: #e3702d;
+$vk: #4c75a3;
+
+$color-combs: (
+    'theme': $theme,
+    'background': $background,
+    'white': $white,
+    'line': $line,
+    'text': $text,
+    'black': $black,
+    'gray': $gray,
+    'red': $red,
+    'green': $green,
+    'blue': $blue,
+    'grayscale': $grayscale,
+    'darktheme': $darktheme,
+    'darkblue': $darkblue,
+    'dark': $dark,
+    'facebook': $facebook,
+    'twitter': $twitter,
+    'linkedin': $linkedin,
+    'whatsapp': $whatsapp,
+    'youtube': $youtube,
+    'instagram': $instagram,
+    'pinterest': $pinterest,
+    'github': $github,
+    'reddit': $reddit,
+    'telegram': $telegram,
+    'rss': $rss,
+    'vk': $vk,
+);
+
+$theme-50: tint($theme, 90%);
+$theme-100: tint($theme, 70%);
+$theme-200: tint($theme, 50%);
+$theme-300: tint($theme, 30%);
+$theme-400: tint($theme, 10%);
+$theme-500: $theme;
+$theme-600: shade($theme, 10%);
+$theme-700: shade($theme, 30%);
+$theme-800: shade($theme, 50%);
+$theme-900: shade($theme, 70%);
+$theme-950: shade($theme, 90%);
+
+$gray-50: tint($gray, 90%);
+$gray-100: tint($gray, 80%);
+$gray-200: tint($gray, 60%);
+$gray-300: tint($gray, 40%);
+$gray-400: tint($gray, 20%);
+$gray-500: $gray;
+$gray-600: shade($gray, 20%);
+$gray-700: shade($gray, 40%);
+$gray-800: shade($gray, 60%);
+$gray-900: shade($gray, 80%);
+$gray-950: shade($gray, 90%);
+
+$color-mixes: (
+    "theme": (
+        50: $theme-50,
+        100: $theme-100,
+        200: $theme-200,
+        300: $theme-300,
+        400: $theme-400,
+        500: $theme-500,
+        600: $theme-600,
+        700: $theme-700,
+        800: $theme-800,
+        900: $theme-900,
+    ),
+    "gray": (
+        50: $gray-50,
+        100: $gray-100,
+        200: $gray-200,
+        300: $gray-300,
+        400: $gray-400,
+        500: $gray-500,
+        600: $gray-600,
+        700: $gray-700,
+        800: $gray-800,
+        900: $gray-900,
+    ),
+);
+
+// Typography (Font Family)
+$font-family-default: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-family-poppins: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$font-family-roboto: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+$typo-mixes:(
+    "font": (
+        "primary": $font-family-poppins,
+        "secondary": $font-family-default,
+        "accent": $font-family-default,
+        "roboto": $font-family-default,
+        "poppins": $font-family-poppins,
+        "default": $font-family-default,
+        "main": $font-family-default,
+        "subheading": $font-family-default,
+        "text": $font-family-default,
+    ),
+);
+
+// Font Sizes (320px/20rem - 1600px/100rem)
+$xsmall: clamp(0.6875rem, 0.65625rem + 0.15625vw, 0.8125rem); // 11px, 13px
+$small: clamp(0.75rem, 0.71875rem + 0.15625vw, 0.875rem); // 12px, 14px
+$body: clamp(0.9375rem, 0.890625rem + 0.23437500000000003vw, 1.125rem); //15px, 18px
+$h1: clamp(2.5rem, 2.125rem + 1.8750000000000002vw, 4rem); // 40px, 64px
+$h2: clamp(2rem, 1.625rem + 1.8750000000000002vw, 3.5rem); // 32px, 56px
+$h3: clamp(1.8rem, 1.6500000000000001rem + 0.7499999999999999vw, 2.4rem); // 28.8px, 38.4px
+$h4: clamp(1.6rem, 1.5rem + 0.49999999999999994vw, 2rem); // 25.6px, 32px
+$h5: clamp(1.4rem, 1.3499999999999999rem + 0.2500000000000002vw, 1.6rem); // 22.4px, 25.6px
+$h6: clamp(1.2rem, 1.15rem + 0.24999999999999997vw, 1.4rem); // 19.2px, 22.4px
+$display-1: clamp(2.8125rem, 2.265625rem + 2.734375vw, 5rem); // 45px, 80px
+$display-2: clamp(2.625rem, 2.15625rem + 2.34375vw, 4.5rem); // 42px, 72px
+
+$size-mixes:(
+    "font": (
+        "body": $body,
+        "h1": $h1,
+        "h2": $h2,
+        "h3": $h3,
+        "h4": $h4,
+        "h5": $h5,
+        "h6": $h6,
+        "sm": $small,
+        "xs": $xsmall,
+        "display1": $display-1,
+        "display2": $display-2,
+    ),
+);
+
+$radius-mixes:(
+    "radius": (
+        "null": 0,
+        "xs": 3px,
+        "sm": 6px,
+        "md": 15px,
+        "lg": 25px,
+        "xl": 32px,
+        "circle": 50%,
+        "full": 100%,
+    ),
+);
