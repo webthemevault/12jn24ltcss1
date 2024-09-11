@@ -3,7 +3,14 @@
 *.sass.map
 *.scss.map
 scss/
-assets/images/
+copy-assets/
+copy-scss/
+assets/images/arc-de-triomphe-architecture-couple-2513384.jpg
+assets/images/avatar1.jpg
+assets/images/barcelona.jpg
+assets/images/default-image.jpg
+assets/images/default-image2.jpg
+assets/images/turkey.jpg
 *.html
 node_modules/
 package-lock.json
